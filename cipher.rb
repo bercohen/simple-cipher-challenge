@@ -4,9 +4,11 @@ class Cipher
   end
 
   class << self
+    
+    LETTERS = Array('a'..'z')
 
     def encode(input, distance: 1)
-      letters = ('a'..'z').to_a
+      letters = LETTERS
       begin
         input.downcase.chars.map { |letter| letters[(letters.index(letter) + distance) % 26]}.join
       rescue
@@ -15,7 +17,7 @@ class Cipher
     end
 
     def decode(input, distance: 1)
-      letters = ('a'..'z').to_a
+      letters = LETTERS
       begin
         input.downcase.chars.map { |letter| letters[(letters.index(letter) - distance) % 26]}.join
       rescue
